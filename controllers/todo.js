@@ -44,7 +44,8 @@ async function createNewTodo(req, res) {
 
         const todo = await TODO.create(newTodo);
 
-        res.status(201).json({ status: "success", data: todo });
+        // res.status(201).json({ status: "success", data: todo });
+        res.status(201).json(todo);
 
     } catch (error) {
         // Log the error for debugging purposes
@@ -69,11 +70,12 @@ async function getTodoById(req, res) {
             //  return res.status(404).json({ error: "Todo not Found" }) 
             throw createError(404, 'Todo does not exist.');
         }
-        return res.status(200).json({
-            status: 'success',
-            message: 'Todo successfully',
-            data: todo
-        });
+        // return res.status(200).json({
+        //     status: 'success',
+        //     message: 'Todo successfully',
+        //     data: todo
+        // });
+        res.status(201).json(todo);
     } catch (error) {
         console.log(error.message);
         if (error instanceof mongoose.CastError) {
@@ -96,7 +98,8 @@ async function updateTodoById(req, res) {
         if (!todo) {
             return res.status(404).json({ error: "Todo not found" });
         }
-        return res.json({ message: 'Todo updated successfully', Todo: todo });
+        // return res.json({ message: 'Todo updated successfully', Todo: todo });
+        res.status(201).json(todo);
 
     } catch (error) {
         console.error("Error updating todo:", error);
@@ -114,12 +117,12 @@ async function deleteTodoById(req, res) {
             throw createError(404, 'Todo does not exist.');
         }
         // return res.json({ status: "successfully Deleted" })
-
-        return res.status(200).json({
-            status: 'success',
-            message: 'Todo deleted successfully',
-            data: null
-        });
+        // return res.status(200).json({   
+        //     status: 'success',
+        //     message: 'Todo deleted successfully',
+        //     data: null
+        // });
+        res.status(201).json(todo);
     } catch (error) {
         console.log(error.message);
         if (error instanceof mongoose.CastError) {
