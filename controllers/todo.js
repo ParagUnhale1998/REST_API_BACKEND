@@ -12,7 +12,8 @@ async function getAllTodos(req, res) {
         }
 
         // Return a 200 OK status along with the list of todos
-        return res.status(200).json({ success: true, todos: allDbTodos, length: allDbTodos.length });
+        // return res.status(200).json({ success: true, todos: allDbTodos, length: allDbTodos.length });
+        return res.status(200).json(allDbTodos);
     } catch (error) {
         // Log the error for debugging purposes
         console.error("Error fetching todos:", error);
