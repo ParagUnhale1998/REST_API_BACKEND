@@ -1,11 +1,13 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const todosRouter = require('./routes/todo')
+const cors = require('cors'); 
 const app = express()
 const PORT = 3000
 
 
 //middlewares
+app.use(cors());
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
